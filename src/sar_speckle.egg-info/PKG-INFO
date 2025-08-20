@@ -1,3 +1,17 @@
+Metadata-Version: 2.4
+Name: sar-speckle
+Version: 0.1.0
+Summary: Research toolkit for SAR speckle simulation and mitigation
+Author-email: Félix <felixmaral131@gmail.com>
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=1.24
+Requires-Dist: scipy>=1.10
+Requires-Dist: Pillow>=9.0
+Requires-Dist: matplotlib>=3.7
+Dynamic: license-file
+
 # sar-speckle-mitigation
 
 Research toolkit for **SAR speckle simulation and mitigation**.

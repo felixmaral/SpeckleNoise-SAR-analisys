@@ -1,0 +1,16 @@
+# cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+outputs/*
+!outputs/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+data/raw/*
+!data/raw/.gitkeep
+
+data/samples/*
+!data/samples/.gitkeep

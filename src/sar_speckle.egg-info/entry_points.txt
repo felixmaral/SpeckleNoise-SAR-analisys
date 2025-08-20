@@ -1,0 +1,2 @@
+[console_scripts]
+speckle = sar_speckle.cli:main
