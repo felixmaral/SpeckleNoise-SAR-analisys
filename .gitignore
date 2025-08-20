@@ -1,16 +1,46 @@
-# cache
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python
 __pycache__/
-*.py[cod]
-*$py.class
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
 
-outputs/*
-!outputs/.gitkeep
+# Builds / packaging
+build/
+dist/
 
-data/processed/*
-!data/processed/.gitkeep
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_convert/
 
-data/raw/*
-!data/raw/.gitkeep
+# Data (keep samples small; ignore raw/processed by default)
+data/raw/
+data/processed/
+outputs/
 
-data/samples/*
-!data/samples/.gitkeep
+# Logs & experiments
+experiments/logs/
+experiments/results/
+
+# Plots and figures
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.pdf
+
+# Tools
+.coverage
+.pytest_cache/
+.mypy_cache/

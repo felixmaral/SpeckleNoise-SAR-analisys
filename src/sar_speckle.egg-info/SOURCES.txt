@@ -11,4 +11,7 @@ src/sar_speckle.egg-info/dependency_links.txt
 src/sar_speckle.egg-info/entry_points.txt
 src/sar_speckle.egg-info/requires.txt
 src/sar_speckle.egg-info/top_level.txt
+src/sar_speckle/filters/__init__.py
+src/sar_speckle/filters/classical.py
+tests/test_filters.py
 tests/test_simulation.py

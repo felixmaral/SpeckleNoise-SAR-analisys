@@ -4,7 +4,10 @@ Variable names and comments in English.
 from __future__ import annotations
 import numpy as np
 from scipy.ndimage import gaussian_filter
-
+import argparse
+import argparse
+from pathlib import Path
+from PIL import Image
 
 def _rng_from_seed(rng: np.random.Generator | int | None) -> np.random.Generator:
     if isinstance(rng, np.random.Generator):
@@ -73,3 +76,34 @@ def coherent_multilook_intensity(I: np.ndarray, L: int, rng: np.random.Generator
             im[l] = gaussian_filter(im[l], sigma=correlate_sigma, mode="reflect")
     I_ml = (re * re + im * im).mean(axis=0)
     return I_ml.astype(np.float32)
+
+def simulate_speckle_image(shape=(256, 256), gray_level=0.5, L=3.0, rng=None, correlate_sigma=None):
+    I = np.full(shape, float(gray_level), dtype=np.float32)
+    return apply_speckle_intensity(I, L=L, rng=rng, correlate_sigma=correlate_sigma)
+
+def simulate_main():
+    import argparse
+    from pathlib import Path
+    from PIL import Image
+
+    p = argparse.ArgumentParser(description="Generate single synthetic speckled image")
+    p.add_argument("--L", type=float, default=3.0, help="Equivalent number of looks (ENL)")
+    p.add_argument("--gray-level", type=float, default=0.5, help="Uniform background [0-1]")
+    p.add_argument("--size", type=int, default=256, help="Square size of the image")
+    p.add_argument("--seed", type=int, default=None, help="Random seed")
+    args = p.parse_args()
+
+    img = simulate_speckle_image(
+        shape=(args.size, args.size),
+        gray_level=args.gray_level,
+        L=args.L,
+        rng=args.seed,
+    )
+
+    outdir = Path("outputs/single_sim")
+    outdir.mkdir(parents=True, exist_ok=True)
+    outpath = outdir / f"sim_gray{args.gray_level}_L{args.L}.png"
+
+    arr = (np.clip(img, 0, 1) * 255).astype("uint8")
+    Image.fromarray(arr).save(outpath)
+    print(f"Saved simulated image to {outpath}")

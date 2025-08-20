@@ -1,2 +1,3 @@
 [console_scripts]
-speckle = sar_speckle.cli:main
+speckle-sim = sar_speckle.simulation:simulate_main
+speckle_4 = sar_speckle.cli:main

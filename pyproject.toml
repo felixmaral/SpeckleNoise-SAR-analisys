@@ -23,7 +23,9 @@ package-dir = {"" = "src"}
 where = ["src"]
 
 [project.scripts]
-speckle = "sar_speckle.cli:main"
+speckle_4 = "sar_speckle.cli:main"
+speckle-sim = "sar_speckle.simulation:simulate_main"
+
 
 [tool.ruff]
 line-length = 100
